@@ -26,9 +26,13 @@ Cloning the source repository
 $ git clone git@github.com:mac54neural/as-fileserver.git
 $ cd as-fileserver
 $ (edit files)
-$ git add (files)			[files you want to commit to the repository]
+$ git add (files)			[files you want to commit to the local repository]
 $ git diff --cached 		[shows a list of changes]
 $ git commit -m 'Explain what I changed'
+$ git push origin master	[pushes commits back to the github repository]
+
+Notes:
+you need a github account and set up a ssh key (is explained when you create your account)
 
 
 Building
