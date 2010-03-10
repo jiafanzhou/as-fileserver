@@ -1,0 +1,53 @@
+Repository for the Autonomic Systems fileserver project
+
+Requirements
+============== 
+Java 1.6 sdk
+Apache Ant 
+Apache Tomcat 
+Git
+
+
+Running Tomcat
+===================
+open shell and go to $CATALINA_HOME
+type bin/startup.sh (Linux) or bin/startup.bat (Windows)
+
+
+Tomcat user configuration 
+===========================
+This is required for the Ant Tomcat tasks to succeed (deploying, reloading from Ant)
+edit $CATALINA_HOME/conf/tomcat-users.xml:
+- add a role 'manager' and assign this role to a user
+
+
+Cloning the source repository
+==================================
+$ git clone git@github.com:mac54neural/as-fileserver.git
+$ cd as-fileserver
+$ (edit files)
+$ git add (files)			[files you want to commit to the repository]
+$ git diff --cached 		[shows a list of changes]
+$ git commit -m 'Explain what I changed'
+
+
+Building
+=============
+(1) edit the build.properties file:
+appserver.home=[location of your Tomcat installation]
+tomcat.manager.url=http://localhost:8080/manager
+tomcat.manager.username=[a user with role 'manager' in the $CATALINA_HOME/conf/tomcat-users.xml file]
+tomcat.manager.password=[the password for this user in the $CATALINA_HOME/conf/tomcat-users.xml file]
+
+(2) run Ant 
+ant 			- list all possible targets
+ant build 		- compiles the Java src tree
+ant deploy 		- deploys to your local Tomcat server	(Tomcat needs to be running)
+
+
+Testing
+=============
+open http://127.0.0.1:8080/fileserver in your browser
+
+
+
