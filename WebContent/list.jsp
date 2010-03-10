@@ -4,5 +4,7 @@
     <h1>Autonomic Systems Fileserver - List</h1>
     <p><a href="/fileserver/">Welcome</a>
     <p>Time is ${currentTime}</p>
+    
+    parameter value is ${parmValue}
   </body>
 </html>
