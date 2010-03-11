@@ -17,16 +17,16 @@ import org.apache.log4j.Logger;
 /**
  * Servlet implementation class ListServlet
  */
-public class ListServlet extends HttpServlet {
+public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static DateFormat dateFormatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss");
-	private static Logger logger = Logger.getLogger(ListServlet.class);
+	private static Logger logger = Logger.getLogger(IndexServlet.class);
 
     /**
      * Default constructor. 
      */
-    public ListServlet() {
+    public IndexServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -41,12 +41,12 @@ public class ListServlet extends HttpServlet {
 		String currentTime = dateFormatter.format(new Date());
 		request.setAttribute("currentTime", currentTime);
 		
-		/* get file list */
-		List<File> fileList = ResourceManager.INSTANCE.getFileList();
-		request.setAttribute("fileList", fileList);		
+		/* get list of servers and attach to request*/
+		List<String> serverList = ResourceManager.INSTANCE.getServerList();
+		request.setAttribute("serverList", serverList);
 		
 		/* forward request to the view for rendering */
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 
 	}
